@@ -1,4 +1,5 @@
 from flask import Flask, request
+import json
 
 app = Flask(__name__)
 
@@ -20,7 +21,16 @@ def get_sum():
                 "sum": 3
             }
     """
-    pass
+    
+    a = request.args.get("a",0)
+    b = request.args.get('b',0)
+
+    sum = {
+        "sum":int(a)+int(b)
+    }
+
+    sum = json.dumps(sum,indent=4)
+    return sum
 
 
 if __name__ == "__main__":
